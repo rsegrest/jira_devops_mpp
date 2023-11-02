@@ -1,0 +1,4 @@
+__pycache__/*
+auth/__pycache__/
+auth/token.txt
+interface/__pycache__/

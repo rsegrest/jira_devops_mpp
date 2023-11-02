@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue Search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script type="text/javascript">
+            function populateSelectIssueType(elementArray, selectId) {
+                var selector = document.querySelector(selectId);
+                var htmlString = '';
+                for (var i = 0; i < elementArray.length; i += 1) {
+                    htmlString = htmlString + '<option>'+elementArray[i]+'</option>';
+                }
+                selector.innerHTML = htmlString;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-full-width">
+            <div class="centered-frame">
+                <h2>Issue Search</h2>
+                <form>
+                    <div id="dashboard">
+                        <div class="dropdown">
+                            <label for="issueTypeSelect">Issue Types</label>
+                            <select name="issueTypeSelect" id="issueTypeSelect">
+                                <script type="text/javascript">
+                                    populateSelectIssueType({{ issuetypes | safe }}, '#issueTypeSelect');
+                                </script>
+                            </select>
+                        </div>
+                    </div>
+                        <div id="button_row">
+                            <button id="submit_epic_button">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        const epic_submit_btn = document.querySelector('#submit_epic_button');
+        console.log('epic_submit_btn: ', epic_submit_btn)
+        epic_submit_btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const issueTypeSelect = document.querySelector('#issueTypeSelect');
+            console.log('issueTypeSelect : ' + issueTypeSelect.value)
+            const next_url = '/results/'+issueTypeSelect.value; // +'/'+statusSelect.value;
+            console.log('next_url: ', next_url)
+            window.open(next_url, '_blank')
+        });
+    </script>
+</html>

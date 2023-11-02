@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue Search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script type="text/javascript">
+            function populateSelectIssueType(elementArray, selectId) {
+                var selector = document.querySelector(selectId);
+                var htmlString = '';
+                for (var i = 0; i < elementArray.length; i += 1) {
+                    htmlString = htmlString + '<option>'+elementArray[i]+'</option>';
+                }
+                selector.innerHTML = htmlString;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-full-width">
+                <!-- GENERATED TABLE -->
+                <table>
+                    <thead><tr><th>Issue ID</th><th>Issue Key</th><th>Issue Type</th><th>Time Spent</th><th>Project</th><th>Priority</th><th>Assignee Name</th><th>Status Name</th><th>Created</th><th>Resolution Date</th><th>Story Points</th><tbody><tr><td>10022</td><td>MPPSAM-23</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-15T14:54:25.000+0000</td><td>2.0</td></tr><tr><td>10021</td><td>MPPSAM-22</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-13T13:16:25.000+0000</td><td>2.0</td></tr><tr><td>10020</td><td>MPPSAM-21</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-10T21:56:25.000+0000</td><td>1.0</td></tr><tr><td>10019</td><td>MPPSAM-20</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-08T15:18:25.000+0000</td><td>3.0</td></tr><tr><td>10018</td><td>MPPSAM-19</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-07T02:43:25.000+0000</td><td>5.0</td></tr><tr><td>10017</td><td>MPPSAM-18</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>Done</td><td>2023-06-03T06:19:25.000+0000</td><td>2023-06-04T02:49:25.000+0000</td><td>3.0</td></tr><tr><td>10015</td><td>MPPSAM-16</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>Done</td><td>2023-05-27T11:25:25.000+0000</td><td>2023-06-18T14:01:25.000+0000</td><td>2.0</td></tr><tr><td>10014</td><td>MPPSAM-15</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>Done</td><td>2023-06-17T07:29:25.000+0000</td><td>2023-06-21T22:05:25.000+0000</td><td>4.0</td></tr><tr><td>10013</td><td>MPPSAM-14</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>To Do</td><td>2023-06-23T12:29:25.000+0000</td><td>None</td><td>3.0</td></tr><tr><td>10009</td><td>MPPSAM-10</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>rsegrest77@gmail.com</td><td>In Progress</td><td>2023-06-17T07:29:25.000+0000</td><td>None</td><td>5.0</td></tr><tr><td>10008</td><td>MPPSAM-9</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:30.000+0000</td><td>None</td><td>3.0</td></tr><tr><td>10005</td><td>MPPSAM-6</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:29.000+0000</td><td>None</td><td>1.0</td></tr><tr><td>10004</td><td>MPPSAM-5</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:29.000+0000</td><td>None</td><td>1.0</td></tr><tr><td>10003</td><td>MPPSAM-4</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:29.000+0000</td><td>None</td><td>5.0</td></tr><tr><td>10002</td><td>MPPSAM-3</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:29.000+0000</td><td>None</td><td>5.0</td></tr><tr><td>10001</td><td>MPPSAM-2</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:28.000+0000</td><td>None</td><td>2.0</td></tr><tr><td>10000</td><td>MPPSAM-1</td><td>Story</td><td>None</td><td>mpp-sample</td><td>Medium</td><td>None</td><td>To Do</td><td>2023-06-24T16:39:25.000+0000</td><td>None</td><td>2.0</td></tr></tbody></tr></thead><tbody></tbody>
+                </table>
+        </div>
+    </body>
+</html>

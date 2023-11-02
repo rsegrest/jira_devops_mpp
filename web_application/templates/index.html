@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Epic Search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script type="text/javascript">
+            function populateSelect(elementArray, selectId) {
+                var selector = document.querySelector(selectId);
+                var htmlString = '';
+                for (var i = 0; i < elementArray.length; i += 1) {
+                    htmlString = htmlString + '<option>'+elementArray[i]+'</option>'
+                }
+                selector.innerHTML = htmlString;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-full-width">
+            <div class="half-width">
+                <h2>Epic Search</h2>
+                <form action="/results" method="GET">
+                    <div id="dashboard">
+                        <div id="dropdown_row">
+                            <div class="dropdown">
+                            <label for="fixVersionSelect">Fix Version</label>
+                            <select name="fixVersionSelect" id="fixVersionSelect">
+                                <script type="text/javascript">
+                                    populateSelect({{ fix_versions | safe }}, '#fixVersionSelect');
+                                </script>
+                            </select>
+                        </div>
+                        <div class="dropdown">
+                            <label for="issueTypeSelect">Issue Types</label>
+                            <select name="issueTypeSelect" id="issueTypeSelect">
+                                <script type="text/javascript">
+                                    populateSelect({{ issuetypes | safe }}, '#issueTypeSelect');
+                                </script>
+                            </select>
+                        </div>
+                        <div class="dropdown">
+                            <label for="statusSelect">Status</label>
+                            <select name="statusSelect" id="statusSelect">
+                                <script type="text/javascript">
+                                    const issueTypeSelect = document.querySelector('#issueTypeSelect');
+                                    populateStatusSelect({{ statuses | safe }}, issueTypeSelect.value);
+                                </script>
+                            </select>
+                        </div>
+                    </div>
+                        <div id="button_row">
+                            <button id="submit_epic_button">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="half-width">
+                <h2>Sprint Search</h2>
+            <form action="/results" method="GET">
+                <div id="dashboard">
+                    <div id="dropdown_row">
+                        <div class="dropdown">
+                        <label for="boardSelect">Board</label>
+                        <select name="boardSelect" id="boardSelect">
+                            <script type="text/javascript">
+                                populateBoardSelect({{ boards | safe }}, '#boardSelect');
+                            </script>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="sprintSelect">Sprint</label>
+                        <select name="sprintSelect" id="sprintSelect">
+                            <script type="text/javascript">
+                                const boardSelect = document.querySelector('#boardSelect');
+                                const boardSelectOptions = boardSelect.options;
+                                const boardOptionID = boardSelectOptions[boardSelectOptions.selectedIndex].id
+                                populateSprintSelect({{ sprints | safe }}, boardOptionID);
+                            </script>
+                        </select>
+                    </div>
+                </div>
+                    <div id="button_row">
+                        <button id="submit_sprint_button">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        issueTypeSelect.addEventListener('change', (event) => {
+            const statuses = {{ statuses | safe }};
+            const issuetypeSelected = issueTypeSelect.value;
+            populateStatusSelect(statuses, issuetypeSelected);
+        });
+        const epic_submit_btn = document.querySelector('#submit_epic_button');
+        epic_submit_btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const fixVersionSelect = document.querySelector('#fixVersionSelect');
+            const issueTypeSelect = document.querySelector('#issueTypeSelect');
+            const statusSelect = document.querySelector('#statusSelect');
+            const next_url = '/results/'+fixVersionSelect.value+'/'+issueTypeSelect.value+'/'+statusSelect.value;
+            window.open(next_url, '_blank')
+        });
+        boardSelect.addEventListener('change', (event) => {
+            const boardOptions = boardSelect.options;
+            const optionSelectedID = boardOptions[boardOptions.selectedIndex].id
+            populateSprintSelect({{ sprints | safe }}, optionSelectedID);
+        });
+        const sprint_submit_btn = document.querySelector('#submit_sprint_button');
+        sprint_submit_btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const sprintSelect = document.querySelector('#sprintSelect');
+            const sprintOptions = sprintSelect.options;
+            const sprintID = sprintOptions[sprintOptions.selectedIndex].id;
+            const next_url = '/sprintmetrics/'+sprintID;
+            window.open(next_url, '_blank')
+        });
+    </script>
+</html>

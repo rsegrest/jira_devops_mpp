@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+            <script type="text/javascript">
+                function exportClickHandler(export_url) {
+                    window.open(export_url, '_blank')
+                }
+            </script>
+        </head>
+    <body>
+        <div class="results_container">
+            <div>Export URL:</div>
+            <div class="export_btn_div">
+                <input
+                    class="export_btn"
+                    type="button"
+                    value="Download Spreadsheet"
+                    onClick='exportClickHandler( "{{ export_url | safe }}" )'
+                />
+            </div>
+            <table class="results_table" style="text-color: black;">
+                <tr class='results_header_row'>
+                    <th class='results_header_cell'>Issue Key</th>
+                    <th class='results_header_cell'>Summary</th>
+                    <th class='results_header_cell'>Fix Version</th>
+                    <th class='results_header_cell'>Status</th>
+                    <th class='results_header_cell'>Estimate</th>
+                    <th class='results_header_cell'>Remaining Days</th>
+                    <th class='results_header_cell'>Man Days Spent</th>
+                    <th class='results_header_cell'>% Accurate</th>
+                </tr>
+                {{ sprint_metrics_table | safe }}
+            </table>
+        </div>
+    </body>
+</html>
+
+

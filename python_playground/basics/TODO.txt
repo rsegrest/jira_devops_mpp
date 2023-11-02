@@ -1,0 +1,252 @@
+Python MPP TODO — 6 July 2023
+
+Add audio to iMovie video
+https://support.apple.com/en-us/HT212060
+
+Add Keynote slides to iMovie
+
+
+For Each item
+1. Write script
+2. One or more of the following:
+    1. Video Capture
+    2. Screen shots
+    3. Presentation Slides
+    4. Voice-over
+
+
+* Check if Python is installed (3.8 or above)
+* Install Python
+    * Windows
+        * PowerShell (admin)
+        * WSL
+            * Caveats with VPN’s Proxy
+    * Linux
+        * Docker
+            * Install Docker
+            * Pull script
+
+* Check PIP
+* Install PIP
+
+* Check git
+* Install git
+    * git basics:
+        * init
+        * clone
+        * status
+        * remote
+            * git remote -v
+        * commit
+        * log
+        * add
+        * push
+        * pull
+        * fetch
+        * stash
+        * reset
+
+* README.md  
+
+* VSCode
+    * Installing
+    * Extensions
+        * Python
+        * PyTest?
+        * Prettier or Black formatter
+        * Inline Terminal
+    * Alternatives
+        * vi, emacs, nano in Linux terminal
+            * No graphics, but handy
+        * Free GUI-based:
+            * Atom
+            * Sublime
+        * Proprietary:
+            * PyCharm
+
+* Python basic concepts:
+    * Reference pages:
+        * TODO: Collect
+
+    * System (?):
+        * Python REPL
+            * Read-Execute-Print Loop
+            * Enter one command at the time and see the result
+        * PYTHONPATH
+    * Language syntax and features
+        * Colons and whitespace instead of brackets
+            * Set up “TAB” key to insert 3-4 spaces, instead of TAB character
+            * Windows vs. Unix (Linux & MacOS): CRLF vs. LF convension
+                * Use LF, this works on both
+                * “Show invisible characters”
+
+        * case conventions (not CamelCase)
+            * 
+        * print(“Hello World”)
+        * main
+        * import
+            * import my_module
+            * from my_module import *
+            * from my_module import function_name
+            * from my_module_name import function_name as fn
+        * set a variable
+            * myvar = 42
+            * myvar = myvar + 1
+                * prints: 43
+            * myvar = None
+            * type()
+    * Basic data types
+        * comments
+            * # - line
+            * “”” … “”” Multi-line comment
+        * None type
+            * like “null”
+        * Strings
+            * Special characters: \n, \t
+        
+        
+        * booleans:
+            * True, False (with capital)
+
+        * Numbers:
+            * int vs. float
+                * automatically converts int to float if operation results in decimal number
+            * underscores instead of commas in numbers > 1_000
+                * One million: 1_000_000
+            * int() and float() cast string to numerical value
+                * ‘4’ + ‘6’ = 46
+                * int(‘4’) + int(‘6’) = 10
+
+        * list
+            * Like array
+            * Can be multidimensional
+                * Will use 2D array to create output tables
+            * Index [0]
+            * len(mylist)
+            * Index[-1] — last element
+            * Adding elements:
+                * mylist.append(newelement)
+                * mylist.insert(0, newelement)
+            * Removing elements:
+                * del mylist[0]
+                * mylist.pop()
+                * Remove by Value: mylist.remove(newelement)
+            * Sorting in place:
+                * mylist.sort()
+                * mylist.sort(reverse=True) # optional argument
+            * Sort a temporary copy of the list:
+                * sorted_list = mylist.sorted()
+                * print(mylist) # original list, unsorted
+
+        * dictionary (dict)
+            * mydictionary = {}  # empty set, can add to it
+                * mydictionary[‘test_key’] = ‘A value.’
+            * mydictionary = { ‘key1’: ‘value’1, ‘key2’: ‘value2’, 3: ‘three’, ‘four’: 4 }
+            * del alien_0['points']
+            * Get keys, or use keys to loop
+                * mydict.keys() # returns a list
+                * for key, value in mydictionary
+
+        * tuples
+            * like a “immutable” list — elements can’t be changed
+            * mytuple = (1,2,3)
+        * class
+
+    * Mathematical operations
+        * +, -, *, /, ()
+            * Order of operations
+        * **, %
+            * if number % 2 == 0:
+            *     print(f"\nThe number {number} is even.")
+            * else:
+            *     print(f"\nThe number {number} is odd.")
+        * Boolean operators:
+            * Compare two variables:
+                * ==, !=, >, <, >=, <=
+            * “unary” operator
+                * ! -> “NOT” operator
+        * min, max
+    * Flow control
+        * “if”, “elif”, “else”
+            * No parenthesis at lowest level
+            * “and”, “or”
+            * Don’t confuse “=“ and “==“
+                * You usually want to use “==“ in “if” statement
+                * Warning?
+            * Check if item is in a list
+                * requested_toppings = ['mushrooms', 'onions', 'pineapple']
+                * 'mushrooms' in requested_toppings
+                    *    True
+                * 'pepperoni' in requested_toppings
+                    *    False
+        * switch statement
+            * New in Python
+        * for item in items
+            * print(item)
+        * while loop
+            * can cause infinite loop, probably best to avoid
+        * break
+            * exits loop
+        * continue
+            * stop processing block and go back to start for next iteration of loop
+
+        * for i in range()
+    * Working with JSON
+        * Like dict
+        * Check if key exists
+
+* Pylint / PEP8 set up
+    * https://python.org/dev/peps/pep-0008/
+    * VSCode extensions
+
+* Python functions
+    * def foo():
+    * Function arguments
+        * Positional arguments
+        * Named arguments
+        * Default values
+        * Indefinite number of arguments
+    * Return values
+        * No return
+        * Void return
+        * return a value
+
+* Python classes
+    * class Dog:
+        * def __init__(self, name):
+            * self.name = name
+        * def roll_over(self):
+            * print(self.name + “ is rolling_over”)
+    * Constructor: __init__() function
+    * Create an instance:
+        * my_dog = Dog(“Rufus”)
+        * my_dog.roll_over()
+
+* Python I/O
+    * Write to file:
+        * with open(filename, 'w') as file_object:
+            * file_object.write("I love programming.")
+    * Read from file:
+
+* Access a Test Jira Instance
+    * Set up Atlassian Account
+    * Options:
+        * Set up a Cloud instance
+        * Pull Atlassian image to create container
+        * Use my cloud instance
+            * TODO: Set up / migrate current test server as cloud
+
+
+* Authentication
+    * Using username & password
+        * .env file (add to .gitignore)
+    * Using Personal Access Token
+        * Tied to user
+    * Using API Token
+        * Tied to application
+
+* Connect to Jira
+
+* Jinja
+
+* 
