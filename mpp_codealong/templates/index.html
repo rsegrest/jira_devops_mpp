@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles/app.css')}}">
+            <script type="text/javascript">
+                function populateSelect(
+                    elementArray,
+                    selectId
+                ) {
+                    var selector = document.querySelector(selectId);
+                    var htmlString = '';
+                    for (var i = 0; i < elementArray.length; i += 1)
+                    {
+                        htmlString = htmlString + '<option>'+elementArray[i]+'</option>';
+                    }
+                    selector.innerHTML = htmlString;    
+                }
+            </script>
+            <title>Issue Search</title>
+    </head>
+    <body>
+    <div class="container-full-width">
+        <div class="centered-frame">
+            <h2>Issue Search</h2>
+            <form>
+                <label for="issueTypeSelect" />
+                <select name="issueTypeSelect" id="issueTypeSelect">
+                    <script type="text/javascript">
+                        populateSelect(
+                            {{ issue_types | safe }},
+                            '#issueTypeSelect'
+                        )
+                    </script>
+                </select>
+                <div id="button_row">
+                    <button id="submit_issue_button">Submit</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </body>
+</html>

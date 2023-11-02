@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <link rel="stylesheet" href={{ url_for('static', filename='styles/app.css') }}>
+    <body>
+    <div class="results_container">
+        {{ results_table | safe }}
+    </div>
+    </body>
+</html>
